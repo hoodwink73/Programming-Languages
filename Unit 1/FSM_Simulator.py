@@ -5,6 +5,8 @@
 # A key is a tuple of (current_state, character)
 # The value is the next state achieved after the previous 
 # state consumes a particular character
+
+# r'a+1+'
 edges = {(1, 'a') : 2,
          (2, 'a') : 2,
          (2, '1') : 3,
@@ -38,5 +40,36 @@ def fsmsim(string, current, edges, accepting):
             return False
 
 
-print fsmsim("aaa111",1,edges,accepting)
+
+def test():
+    # r'a+1+'
+    plus_edges = {(1, 'a') : 2,
+             (2, 'a') : 2,
+             (2, '1') : 3,
+             (3, '1') : 3}
+
+    # a list of accepting states
+    plus_accepting = [3]
+
+    #r'q*'
+    star_edges = {
+        (1, 'q'): 1
+    }
+
+    # a list of accepting states
+    star_accepting = [1]
+
+    assert fsmsim("aaa111", 1, plus_edges, plus_accepting) == True
+    assert fsmsim("a1a1a1", 1, plus_edges, plus_accepting) == False
+    assert fsmsim("", 1, star_edges, star_accepting) == True
+    assert fsmsim("q", 1, star_edges, star_accepting) == True
+    assert fsmsim("qqqq", 1, star_edges, star_accepting) == True
+    assert fsmsim("a", 1, star_edges, star_accepting) == False
+
+    print "All test passed"
+
+
+
+test()
+# print fsmsim("aaa111",1,edges,accepting)
 # >>> True
