@@ -17,22 +17,24 @@ A finite-state machine (FSM) or finite-state automaton (plural: automata), or si
 
 A finite state machine with epsilon transitions or multiple outgoing edges leaving the same state with the same label is ambiguous. A finite state machine accepts a string if there is any path for that string that leads to an accepting state. 
 
-Matching Phone Number
+## Matching Phone Number
 
 A regexp for matching a phone number with a group of numbers which may seperated
 by a `-`
 
 For example, the regexp should match these:
 
-123-4567
-1234567
-08-78-88-88-88
-0878888888
+123-4567  
+1234567  
+08-78-88-88-88  
+0878888888  
 
-but not this
--6
+but not this   
+-6  
 
+```python
 regexp = r'(?:[0-9]+-)*[0-9]'
+```
 
 A finite state machine with epsilon transitions or multiple outgoing edges is called **non-deterministic**. By contrast, a "lock-step" finite state machine is called **deterministic**.
 
